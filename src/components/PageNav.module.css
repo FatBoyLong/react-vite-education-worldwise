@@ -1,0 +1,23 @@
+/* don`t use styling of elements like h1, ul, li here */
+/* style only classes */
+
+.nav {
+  background-color: orangered;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+/* making styles global and accessible in all components by using :global(.CLASS_NAME) */
+:global(.test) {
+  background-color: yellow;
+}
+
+.nav :global(.active) {
+  background-color: yellow;
+}
+
+
