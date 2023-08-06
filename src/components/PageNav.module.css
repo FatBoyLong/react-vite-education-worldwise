@@ -1,23 +1,34 @@
-/* don`t use styling of elements like h1, ul, li here */
-/* style only classes */
-
 .nav {
-  background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nav ul {
-  display: flex;
-  justify-content: space-between;
   list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
 }
 
-/* making styles global and accessible in all components by using :global(.CLASS_NAME) */
-:global(.test) {
-  background-color: yellow;
+.nav a:link,
+.nav a:visited {
+  text-decoration: none;
+  color: var(--color-light--2);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-.nav :global(.active) {
-  background-color: yellow;
+/* CSS Modules feature */
+.nav a:global(.active) {
+  color: var(--color-brand--2);
 }
 
-
+a.ctaLink:link,
+a.ctaLink:visited {
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+}
