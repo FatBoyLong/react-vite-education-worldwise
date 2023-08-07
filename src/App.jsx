@@ -10,6 +10,7 @@ import AppLayout from './pages/AppLayout';
 import Login from './pages/Login';
 import CityList from './components/CityList';
 import CountryList from './components/CountryList';
+import City from './components/City';
 
 const BASE_URL = 'http://localhost:9000';
 
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         {/* path="/" is root path */}
         <Route path="/" element={<Homepage />} />
+
         <Route path="product" element={<Product />} />
         <Route path="pricing" element={<Pricing />} />
         <Route path="login" element={<Login />} />
@@ -56,6 +58,9 @@ function App() {
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
 
+          {/* /:NAME (NAME CAN BE ANYTHING), later it will be key of param */}
+          <Route path="cities/:id" element={<City />} />
+
           {/* Nested Route */}
           <Route
             path="countries"
@@ -63,7 +68,7 @@ function App() {
           />
 
           {/* Nested Route */}
-          <Route path="Form" element={<p>Form </p>} />
+          <Route path="form" element={<p>Form</p>} />
         </Route>
 
         {/* path="*" displays if not matched rout exists */}
