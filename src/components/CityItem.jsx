@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styles from './CityItem.module.css';
 
 function CityItem({ city }) {
-  console.log(city);
   const { cityName, country, date, emoji, id, notes, position } = city;
 
   // Date formatter function
