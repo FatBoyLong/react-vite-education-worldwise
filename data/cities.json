@@ -1,40 +1,64 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
+      "cityName": "Torrelobaton",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-08-19T12:10:48.513Z",
+      "notes": "",
       "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
+        "lat": 41.623655390686395,
+        "lng": -5.031738281250001
       },
-      "id": 73930385
+      "id": 98443198
     },
     {
       "cityName": "Madrid",
       "country": "Spain",
       "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
+      "date": "2023-08-19T12:25:29.141Z",
       "notes": "",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
+        "lat": 40.40094763151963,
+        "lng": -3.6474609375000004
       },
-      "id": 17806751
+      "id": 98443199
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "cityName": "Lisbon",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2023-08-19T12:25:29.141Z",
+      "notes": "",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": 38.70373101742003,
+        "lng": -9.141311645507814
       },
-      "id": 98443197
+      "id": 98443200
+    },
+    {
+      "cityName": "Cordoba",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-08-19T12:26:33.155Z",
+      "notes": "",
+      "position": {
+        "lat": 37.82280243352759,
+        "lng": -4.372558593750001
+      },
+      "id": 98443201
+    },
+    {
+      "cityName": "Medina de las Torres",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-08-19T12:26:37.892Z",
+      "notes": "",
+      "position": {
+        "lat": 38.37611542403604,
+        "lng": -6.437988281250001
+      },
+      "id": 98443202
     }
   ]
 }

@@ -1,6 +1,8 @@
-import { useState } from 'react';
+// React libraries` imports
+import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+// Side libraries` imports
 import {
   MapContainer,
   TileLayer,
@@ -10,10 +12,14 @@ import {
   useMapEvents,
 } from 'react-leaflet';
 
+// Custom hooks` imports
 import { useCities } from '../contexts/CitiesContext';
+import { useGeolocation } from '../hooks/useGeolocation';
 
+// Styles` imports
 import styles from './Map.module.css';
-import { useEffect } from 'react';
+import Button from './Button';
+import { useUrlPosition } from '../hooks/useUrlposition';
 
 function Map() {
   const { cities } = useCities();
@@ -21,12 +27,15 @@ function Map() {
   // Position for Leaflet
   const [mapPosition, setMapPosition] = useState([40, 0]);
 
-  // Hook from react-router which allows us to get data from the URL
-  const [searchParams, setSearchParams] = useSearchParams();
+  // Custom hook useGeolocation
+  const {
+    isLoading: isLoadingPosition,
+    position: geolocationPosition,
+    getPosition,
+  } = useGeolocation();
 
-  // Mind breaking, returns string. For using in prop position it must be number
-  const mapLat = Number(searchParams.get('lat'));
-  const mapLng = Number(searchParams.get('lng'));
+  // Custom hook useUrlPosition
+  const [mapLat, mapLng] = useUrlPosition();
 
   // We want to remember lat and lng values for rendering current position on map.
   useEffect(
@@ -36,8 +45,21 @@ function Map() {
     [mapLat, mapLng]
   );
 
+  useEffect(
+    function () {
+      if (geolocationPosition)
+        setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+    },
+    [geolocationPosition]
+  );
+
   return (
     <div className={styles.mapContainer}>
+      {!geolocationPosition && (
+        <Button type="position" onClick={getPosition}>
+          {isLoadingPosition ? 'Loading' : 'Use your position'}
+        </Button>
+      )}
       <MapContainer
         center={mapPosition}
         zoom={13}

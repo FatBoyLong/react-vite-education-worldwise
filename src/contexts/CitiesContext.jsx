@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = 'http://localhost:9000';
 
@@ -44,6 +45,43 @@ function CitiesProvider({ children }) {
     }
   }
 
+  async function createCity(newCity) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/cities`, {
+        method: 'POST',
+        body: JSON.stringify(newCity),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      });
+      const data = await res.json();
+
+      setCities((cities) => [...cities, data]);
+    } catch (err) {
+      throw new Error('There was an error creating the city');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function deleteCity(id) {
+    try {
+      setIsLoading(true);
+
+      // Dont need to store result of deleting by await
+      await fetch(`${BASE_URL}/cities/${id}`, {
+        method: 'DELETE',
+      });
+
+      setCities((cities) => cities.filter((city) => id !== city.id));
+    } catch (err) {
+      throw new Error('There was an error deleting city...');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <CitiesContext.Provider
       value={{
@@ -53,7 +91,9 @@ function CitiesProvider({ children }) {
         setIsLoading,
         currentCity,
         setCurrentCity,
-        getCity
+        getCity,
+        createCity,
+        deleteCity,
       }}
     >
       {children}
