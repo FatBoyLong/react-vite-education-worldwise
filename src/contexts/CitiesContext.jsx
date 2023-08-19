@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = 'http://localhost:9000';
 

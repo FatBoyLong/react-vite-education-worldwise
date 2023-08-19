@@ -6,7 +6,7 @@ import styles from './CityItem.module.css';
 function CityItem({ city }) {
   const { currentCity, deleteCity } = useCities();
 
-  const { cityName, country, date, emoji, id, notes, position } = city;
+  const { cityName, date, emoji, id, position } = city;
 
   // Date formatter function
   const formatDate = (date) =>
