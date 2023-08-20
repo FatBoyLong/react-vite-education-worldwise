@@ -11,40 +11,51 @@ import CountryList from './components/CountryList';
 import City from './components/City';
 import Form from './components/Form';
 import CitiesProvider from './contexts/CitiesContext';
+import { AuthProvider } from './contexts/FakeAuthContext';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 function App() {
   return (
-    <CitiesProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* path="/" is root path */}
-          <Route path="/" element={<Homepage />} />
+    <AuthProvider>
+      <CitiesProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* path="/" is root path */}
+            <Route path="/" element={<Homepage />} />
 
-          <Route path="product" element={<Product />} />
-          <Route path="pricing" element={<Pricing />} />
-          <Route path="login" element={<Login />} />
-          <Route path="app" element={<AppLayout />}>
-            {/* Index Route (default route) */}
-            <Route index element={<Navigate replace to="cities" />} />
+            <Route path="product" element={<Product />} />
+            <Route path="pricing" element={<Pricing />} />
+            <Route path="login" element={<Login />} />
+            <Route
+              path="app"
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
+              {/* Index Route (default route) */}
+              <Route index element={<Navigate replace to="cities" />} />
 
-            {/* Nested Route */}
-            <Route path="cities" element={<CityList />} />
+              {/* Nested Route */}
+              <Route path="cities" element={<CityList />} />
 
-            {/* /:NAME (NAME CAN BE ANYTHING), later it will be key of param */}
-            <Route path="cities/:id" element={<City />} />
+              {/* /:NAME (NAME CAN BE ANYTHING), later it will be key of param */}
+              <Route path="cities/:id" element={<City />} />
 
-            {/* Nested Route */}
-            <Route path="countries" element={<CountryList />} />
+              {/* Nested Route */}
+              <Route path="countries" element={<CountryList />} />
 
-            {/* Nested Route */}
-            <Route path="form" element={<Form />} />
-          </Route>
+              {/* Nested Route */}
+              <Route path="form" element={<Form />} />
+            </Route>
 
-          {/* path="*" displays if not matched rout exists */}
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </CitiesProvider>
+            {/* path="*" displays if not matched rout exists */}
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </CitiesProvider>
+    </AuthProvider>
   );
 }
 

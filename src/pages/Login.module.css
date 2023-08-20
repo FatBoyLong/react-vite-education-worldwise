@@ -5,20 +5,6 @@
   min-height: calc(100vh - 5rem);
 }
 
-.login button {
-  display: inline-block;
-  background-color: var(--color-brand--2);
-  color: var(--color-dark--0);
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 1.6rem;
-  font-weight: 600;
-  padding: 1rem 3rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .form {
   background-color: var(--color-dark--2);
   border-radius: 7px;
